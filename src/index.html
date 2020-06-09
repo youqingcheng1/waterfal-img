@@ -5,7 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瀑布流布局</title>
 </head>
+<style>
+     * {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+      }
+
+      body {
+        max-width: 500px;
+        margin: auto;
+      }
+
+      .link {
+        display: block;
+        padding: 8px;
+        text-align: center;
+        color: red;
+      }
+
+      .wrap {
+        display: flex;
+      }
+
+      .half {
+        width: 50%;
+        padding: 8px;
+      }
+
+      .img {
+        border-radius: 8px;
+      }
+</style>
 <body>
-    <div id="app">12132</div>
+    <div id="app">
+        <div class="wrap" v-if="imgsLoaded">
+          <div class="half">
+            <img
+              class="img"
+              v-for="leftIndex in leftImgIndexes"
+              :src="imgs[leftIndex]"
+              :style="{ width: '100%', height: imgHeights[leftIndex] + 'px' }"
+            />
+          </div>
+          <div class="half">
+            <img
+              class="img"
+              v-for="rightIndex in rightImgIndexes"
+              :src="imgs[rightIndex]"
+              :style="{ width: '100%', height: imgHeights[rightIndex] + 'px' }"
+            />
+          </div>
+        </div>
+      </div>
 </body>
 </html>
